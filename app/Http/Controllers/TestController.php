@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\ClientRequest;
 
 class TestController extends Controller
 {
@@ -10,16 +11,8 @@ class TestController extends Controller
     {
         return view('index',['txt' => 'フォームを入力']);        
     }
-    public function post(Request $request)
+    public function post(ClientRequest $request)
     {
-        $validate_rule = [
-            'name' => 'required',
-            'role' => 'required',
-            'email' =>'requiredemail',
-            'age' =>'numeric',
-            'registered_at' => 'date|nullable',
-        ];
-        $this->validate($request,$validate_rule);
         return view('index' ,['txt' => '正しい入力です']);
     }
 }
